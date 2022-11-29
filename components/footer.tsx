@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 export default function Footer() {
   return (
-    <div className="bg-gray-800 w-full flex flex-col p-5 gap-5 items-center">
+    <div className="bg-gray-800 w-full flex flex-col p-5 gap-5 items-center  bottom-0">
 
       <Link href={"/about"}>
         <p className="text-gray-400">About</p>

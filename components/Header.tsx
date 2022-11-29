@@ -14,33 +14,35 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full bg-gray-800 h-20 px-5 flex items-center justify-between sm:px-7 lg:px-10 z-20 fixed top-0">
+      <header className="w-full bg-gray-800 h-20 px-5 flex items-center justify-between sm:px-7 lg:px-10 z-20 fixed top-0 shadow-xl">
+        <Link href={"/"}>
         <h1 className="text-gray-400 text-4xl">Pengo</h1>
+        </Link>
 
-        <div className="flex justify-center w-25 gap-5 h-full">
+        <div className="flex justify-center w-25 gap-5 h-full items-center">
           <FontAwesomeIcon
             icon={faCartShopping}
-            className="text-gray-400 w-8 sm:hidden"
+            className="text-gray-400 w-8 text-5xl sm:hidden"
           />
           {!isOpen && (
             <FontAwesomeIcon
               onClick={(e) => toggleHam()}
               icon={faBars}
-              className="text-gray-400 w-8 sm:hidden"
+              className="text-gray-400 w-8 text-5xl sm:hidden"
             />
           )}
           {isOpen && (
             <FontAwesomeIcon
               onClick={(e) => toggleHam()}
               icon={faClose}
-              className="text-gray-400 w-8 sm:hidden"
+              className="text-gray-400 w-8 text-5xl sm:hidden"
             />
           )}
         </div>
       </header>
 
       {isOpen && (
-        <div className="fixed w-full bg-gray-800 top-0 left-0 z-0 transition duration-200 px-5 pt-20 pb-5 flex flex-col text-xl gap-2">
+        <div className="fixed w-full bg-gray-800 top-0 left-0 z-0 transition duration-200 px-5 pt-20 pb-5 flex flex-col text-xl gap-2 shadow-xl">
           <Link href={"/"}>
             <div
               onClick={(e) => toggleHam()}

@@ -1,12 +1,15 @@
 import React from "react";
 import ProductCard from "../../components/productCard";
 
-export default function Products({ data }) {
-  const productjsx = data.map((product) => {
-    return <ProductCard tshirt={product} />;
+export default function Products({ data } : any) {
+
+
+  const productjsx = data.map((product : any , id : number) => {
+    return <ProductCard key={id} tshirt={product} />;
   });
 
   return (
+    <>
     <div className="pt-24 flex flex-col gap-10">
       <h1 className="text-5xl text-center">All products</h1>
 
@@ -16,6 +19,7 @@ export default function Products({ data }) {
         {productjsx}
       </div>
     </div>
+    </>
   );
 }
 
@@ -27,3 +31,7 @@ export async function getServerSideProps() {
     props: data_res,
   };
 }
+
+
+
+
