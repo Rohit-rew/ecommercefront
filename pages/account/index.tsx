@@ -1,6 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import { useCookies } from "react-cookie";
+import axios from "axios";
 
 export default function Account() {
   const [cookie, setcookie] = useCookies();
@@ -22,6 +23,19 @@ export default function Account() {
       path:"/"
     })
   }
+
+  // React.useEffect(()=>{
+  //   fetch()
+  //   async function fetch (){
+  //     try {
+  //       const user = await axios.get("http://192.168.1.7:1337/users/me" , {headers : {Authorization: `Bearer ${cookie.ecommerce}`}})
+  //       console.log(user)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+
+  //   }
+  // },[0])
 
   // if not logged in
   if (!cookie.ecommerce) {

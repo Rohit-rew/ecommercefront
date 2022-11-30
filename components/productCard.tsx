@@ -8,11 +8,10 @@ export default function ProductCard({ tshirt }: any) {
   const {addItem} = React.useContext(cartContext)
 
 
-  console.log(animate)
   function addToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent> , tshirt) {
     e.stopPropagation();
     setanimate(true);
-    addItem(tshirt)
+    addItem({...tshirt , qty : 1})
     setTimeout(() => {
       setanimate(false);
     }, 1500);
@@ -59,9 +58,6 @@ export default function ProductCard({ tshirt }: any) {
 }
 
 function AddedToCart() {
-
-  console.log("yesss");
-  
 
   return (
     <div className="addedtocart w-screen h-screen fixed flex justify-center items-center top-0">
