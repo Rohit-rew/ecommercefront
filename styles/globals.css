@@ -4,6 +4,7 @@
 
 /* ------ */
 
+
 .hero-mobile {
   padding: 10px;
   box-sizing: border-box;
@@ -35,3 +36,5 @@
 .registered__modal{
   background-color: rgba(0, 0, 0, 0.562);
 }
+
+

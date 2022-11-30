@@ -1,4 +1,5 @@
 import React from 'react'
+import Router from 'next/router'
 
 export default function Hero() {
   return (
@@ -13,7 +14,7 @@ export default function Hero() {
       </h1>
       <p className="mb-8 leading-relaxed">T shirts specially made for coders with an excellent fabric which will not only make you feel comfortable but also confident.</p>
       <div className="flex justify-center">
-        <button className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">Shop Now</button>
+        <button onClick={()=>Router.push("/products")} className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">Shop Now</button>
         
       </div>
     </div>

@@ -1,14 +1,18 @@
 import React from "react";
 import Link from "next/link";
 import Router from "next/router";
+import { cartContext } from "../context/cart";
 
 export default function ProductCard({ tshirt }: any) {
   const [animate, setanimate] = React.useState(false);
+  const {addItem} = React.useContext(cartContext)
 
-  function addToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+
+  console.log(animate)
+  function addToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent> , tshirt) {
     e.stopPropagation();
     setanimate(true);
-
+    addItem(tshirt)
     setTimeout(() => {
       setanimate(false);
     }, 1500);
@@ -21,6 +25,9 @@ export default function ProductCard({ tshirt }: any) {
     e.stopPropagation();
     Router.push(`/${route}`);
   }
+
+
+
 
   return (
     <>
@@ -40,8 +47,8 @@ export default function ProductCard({ tshirt }: any) {
             <h2 className="text-white">Price : {tshirt.attributes.price}</h2>
           </div>
           <button
-            onClick={(e) => addToCart(e)}
-            className="text-white bg-green-400 p-2 rounded"
+            onClick={(e) => addToCart(e , tshirt)}
+            className="text-gray-200 bg-red-500 p-2 rounded"
           >
             Add to cart
           </button>
@@ -52,6 +59,9 @@ export default function ProductCard({ tshirt }: any) {
 }
 
 function AddedToCart() {
+
+  console.log("yesss");
+  
 
   return (
     <div className="addedtocart w-screen h-screen fixed flex justify-center items-center top-0">

@@ -15,7 +15,7 @@ export default function Register() {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const confirmpass = e.target.confirmpass.value;
-        console.log(name , email , password, confirmpass);
+        console.log(name ,email , password, confirmpass);
         
         if(name && email && password.length>=10 && (password == confirmpass)){
             try {
@@ -52,11 +52,11 @@ export default function Register() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="email">Email</label>
-            <input id="email " className="border p-1" type={"email"} />
+            <input id="email" className="border p-1" type={"email"} />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="">Password</label>
+            <label htmlFor="password">Password</label>
             <input id="password" className="border p-1" type={"password"} />
           </div>
 
@@ -90,7 +90,6 @@ export function Registered({user}) {
                 <FontAwesomeIcon className="text-3xl" icon={faListCheck} />
                 <h1 className="text-4xl text-center">Registered</h1>
             </div>
-
                 <h3>User Name : <span className="text-red-400">{user.username}</span> </h3>
                 <h3>Email: <span className="text-red-400">{user.email}</span></h3>
                 <button onClick={()=>data.push("/account/login")}  className="bg-gray-800 rounded-md w-full text-white p-2">Login</button>
