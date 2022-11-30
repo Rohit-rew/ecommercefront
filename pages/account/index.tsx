@@ -40,14 +40,14 @@ export default function Account() {
   // if not logged in
   if (!cookie.ecommerce) {
     return (
-      <div className="min-h-screen pt-20 flex justify-center items-center flex-col gap-5">
-        <div>
-          <h1 className="text-2xl text-center">You are no logged in</h1>
+      <div className="min-h-screen pt-20 flex justify-center items-center flex-col gap-5 ">
+        <div className="max-w-xl">
+          <h1 className="text-2xl text-center ">You are no logged in</h1>
           <h1 className="text-2xl text-center">Please log in to see details</h1>
         </div>
         <button
           onClick={() => Router.push("/account/login")}
-          className="bg-gray-800 px-5 py-2 text-white rounded"
+          className="bg-red-500 px-5 py-2 text-white rounded"
         >
           Log In
         </button>
@@ -62,13 +62,26 @@ export default function Account() {
   }else if(cookie.ecommerce){
 
   return (
-    <div className="min-h-screen pt-20 flex  items-center flex-col gap-5 p-5">
-      <div className="flex flex-col w-full shadow mt-10">
-        <span>Username : {cookie.ecommerceusername}</span>
-        <span>Email : {cookie.ecommerceuseremail}</span>
+    <div className="min-h-screen pt-20 flex  items-center flex-col gap-5 p-5 justify-center items-center bg-gray-200">
+      <div className="flex flex-col w-full shadow mt-10 max-w-xl bg-white rounded p-5 gap-5">
+        <table className="border text-left rounded">
+          <tr className="border ">
+            <th className="border p-1">User Name</th>
+            <th className="border font-light p-1">{cookie.ecommerceusername}</th>
+          </tr>
+
+          <tr className="border">
+            <th className="border p-1">Email</th>
+            <th className="border font-light p-1">{cookie.ecommerceuseremail}</th>
+          </tr>
+
+        </table>
+      <button className="bg-red-500 px-5 py-2 rounded text-white" onClick={()=>logout()}>Log out</button>
       </div>
-      <button className="bg-gray-800 px-5 py-2 rounded text-white" onClick={()=>logout()}>Log out</button>
     </div>
   );
-  }
 }
+}
+
+{/* <span>Username : {cookie.ecommerceusername}</span>
+<span>Email : {cookie.ecommerceuseremail}</span> */}

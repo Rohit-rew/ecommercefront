@@ -70,10 +70,10 @@ export default function Login() {
   if (!cookie.ecommerce) {
     return (
       <>
-        <div className="pt-20 w-full h-screen flex justify-center items-center p-5 flex-col gap-5">
+        <div className="pt-20 w-full h-screen flex justify-center items-center p-5 flex-col gap-5 bg-gray-200">
           <form
             onSubmit={(e) => loginUser(e)}
-            className="shadow w-full flex flex-col p-5 justify-between gap-10"
+            className="shadow w-full flex flex-col p-5 justify-between gap-10 max-w-xl rounded bg-white"
           >
             {error && <p className="text-red-400">{error}</p>}
             <div className="flex flex-col gap-5">
@@ -87,7 +87,7 @@ export default function Login() {
 
             <button
               type="submit"
-              className="bg-gray-800 text-white p-2 rounded-md"
+              className="bg-red-500 text-white p-2 rounded-md"
             >
               Log In
             </button>

@@ -18,23 +18,29 @@ function Cart(props: any) {
   const [cart, setcart] = React.useState({ items: [], checkout: {} });
   const [reload , setreload] = React.useState(1)
 
+  //returns subtotal of the cart
   function subtotal(itemsarray: product[]) {
     let subTotal = 0;
     itemsarray.forEach((item) => {
+      console.log(item.attributes.price , item.qty)
       subTotal += item.attributes.price * item.qty;
     });
     return subTotal;
   }
 
+  //returns taxes to be charged on subtotal
   function gst(subtotal: number): number {
     const totalGst = (subtotal * 6) / 100;
     return totalGst;
   }
+
+  //returns grandtotal of cart
   function total(subtotal: number, gstTotal: number): Number {
     const GrandTotal = subtotal + gstTotal;
     return GrandTotal;
   }
 
+  // adds a item to cart
   function addItem(item: product) {
     if (!cart.items.length) {
       setcart({
@@ -58,7 +64,7 @@ function Cart(props: any) {
           preval.items.splice(index, 1, {
             ...product,
             qty: product.qty + 1,
-            total: product.attributes.price * product.qty,
+            total: product.attributes.price * (product.qty+1),
           });
           return {
             items: [...preval.items],
@@ -88,7 +94,7 @@ function Cart(props: any) {
   }
 
   return (
-    <cartContext.Provider key={reload} value={{ cart, addItem }}>
+    <cartContext.Provider value={{ cart, addItem }}>
       {props.children}
     </cartContext.Provider>
   );

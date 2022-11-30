@@ -23,7 +23,6 @@ export default function Header() {
 
   // contains the cart context
   const { cart } = React.useContext(cartContext);
-  console.log(cart.items.length)
   return (
     <>
       <header className="w-full bg-gray-800 h-20 px-5 flex items-center justify-between sm:px-7 lg:px-10 z-20 fixed top-0">

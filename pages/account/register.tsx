@@ -38,11 +38,11 @@ export default function Register() {
   return (
     <>
     {user && <Registered user={user}/>}
-    <div className="h-screen pt-20 flex justify-center items-center p-5 flex-col gap-8">
+    <div className="h-screen pt-20 flex justify-center items-center p-5 flex-col gap-8 bg-gray-200">
 
         <h1 className="text-4xl">Sign up</h1>
-        <hr className="w-full"/>
-        <form onSubmit={(e)=>register(e)} className="w-full flex flex-col gap-10 text-xl p-3 shadow-md">
+        <hr className="w-full max-w-xl"/>
+        <form onSubmit={(e)=>register(e)} className="w-full flex flex-col gap-10 text-xl p-5 shadow-md max-w-xl bg-white rounded">
 
 
           <div className="flex flex-col gap-2">
@@ -65,7 +65,7 @@ export default function Register() {
             <input id="confirmpass" className="border p-1" type={"password"} />
           </div>
 
-          <button type="submit"  className="bg-gray-800 text-white p-2 rounded-md">Register</button>
+          <button type="submit"  className="bg-red-500 text-white p-2 rounded-md">Register</button>
         </form>
 
       <div>
