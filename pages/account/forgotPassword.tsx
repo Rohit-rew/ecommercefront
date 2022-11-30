@@ -10,7 +10,7 @@ export default function ForgotPassword() {
       <form className="shadow w-full flex flex-col p-5 justify-between gap-10 max-w-xl bg-white rounded">
         <div className="flex flex-col gap-5">
           <label htmlFor="email">Email :</label>
-          <input className="border p-1" type={"email"} />
+          <input className="border p-1 rounded" type={"email"} />
         </div>
 
         <button className="bg-red-500 text-white p-2 rounded-md">Reset</button>

@@ -47,22 +47,22 @@ export default function Register() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="name">Name</label>
-            <input id="name" className="border p-1" type={"text"} />
+            <input id="name" className="border p-1 rounded border-gray-400" type={"text"} />
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="email">Email</label>
-            <input id="email" className="border p-1" type={"email"} />
+            <input id="email" className="border p-1 rounded border-gray-400" type={"email"} />
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="password">Password</label>
-            <input id="password" className="border p-1" type={"password"} />
+            <input id="password" className="border p-1 rounded border-gray-400" type={"password"} />
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="confirmpass">Confirm Password</label>
-            <input id="confirmpass" className="border p-1" type={"password"} />
+            <input id="confirmpass" className="border p-1 rounded border-gray-400" type={"password"} />
           </div>
 
           <button type="submit"  className="bg-red-500 text-white p-2 rounded-md">Register</button>

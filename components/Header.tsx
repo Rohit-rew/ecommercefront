@@ -33,22 +33,22 @@ export default function Header() {
         <div className="flex items-center ">
           <div className="hidden md:flex h-full items-center gap-10 mr-20 p-5 ">
             <Link href={"/"}>
-              <div className="bg-gray-700 text-gray-300 px-5 py-1 rounded-md">
+              <div className={`bg-gray-700 text-gray-300 px-5 py-1 rounded-md hover:bg-gray-600 ${pathname == "/" ? "bg-gray-900" : ""}`}>
                 Home
               </div>
             </Link>
             <Link href={"/products"}>
-              <div className="bg-gray-700 text-gray-300 px-5 py-1 rounded-md">
+              <div className={`bg-gray-700 text-gray-300 px-5 py-1 rounded-md hover:bg-gray-600 ${pathname == "/products" ? "bg-gray-900" : ""}`}>
                 Products
               </div>
             </Link>
             <Link href={"/account"}>
-              <div className="bg-gray-700 text-gray-300 px-5 py-1 rounded-md">
+              <div className={`bg-gray-700 text-gray-300 px-5 py-1 rounded-md hover:bg-gray-600 ${pathname == "/account" ? "bg-gray-900" : ""}`}>
                 Account
               </div>
             </Link>
             <Link href={"/about"}>
-              <div className="bg-gray-700 text-gray-300 px-5 py-1 rounded-md">
+              <div className={`bg-gray-700 text-gray-300 px-5 py-1 rounded-md hover:bg-gray-600 ${pathname == "/about" ? "bg-gray-900" : ""}`}>
                 About
               </div>
             </Link>

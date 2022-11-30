@@ -19,7 +19,7 @@ export default function Cart() {
                     <div className="flex flex-col justify-between text-gray-300">
                       <h2>{product.attributes.Title}</h2>
                       <span className="text-gray-300">
-                        {product.attributes.price} X {product.qty}
+                        {product.attributes.price} X {product.qty} = {product.total}
                       </span>
                     </div>
                   </div>
@@ -36,10 +36,10 @@ export default function Cart() {
           <div className="w-full  shadow mt-5 rounded bg-white p-5 max-w-xl ">
             <div className="flex flex-col gap-1 font-thin">
               <div className="flex justify-between">
-                <span>Sub Total : </span> <span>{cart.checkout.subtotal}</span>
+                <span>Sub Total : </span> <span>{cart.checkout.subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span>Gst : </span> <span>{cart.checkout.gst.toFixed(2)}</span>
+                <span>Gst @ 6% : </span> <span>{cart.checkout.gst.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping : </span> <span>00.00</span>

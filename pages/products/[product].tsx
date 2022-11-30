@@ -11,7 +11,7 @@ export default function Product(props: any) {
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img
             alt="ecommerce"
-            className="lg:w-1/2 w-full lg:h-auto h-74 object-cover object-center rounded"
+            className="lg:w-1/2 w-full lg:h-auto h-74 object-cover object-center rounded bg-white "
             src={`http://192.168.1.7:1337${product.image.data.attributes.url}`}
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -36,7 +36,7 @@ export default function Product(props: any) {
               <span className="title-font font-medium text-2xl text-gray-900">
                 Rs.{product.price}
               </span>
-              <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+              <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                 Buy Now
               </button>
 

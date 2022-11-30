@@ -78,11 +78,11 @@ export default function Login() {
             {error && <p className="text-red-400">{error}</p>}
             <div className="flex flex-col gap-5">
               <label htmlFor="email">Email :</label>
-              <input id="email" className="border p-1" type={"text"} />
+              <input id="email" className="border p-1 rounded" type={"text"} />
             </div>
             <div className="flex flex-col gap-5">
               <label htmlFor="password">Password :</label>
-              <input id="password" className="border p-1" type={"password"} />
+              <input id="password" className="border p-1 rounded" type={"password"} />
             </div>
 
             <button

@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="text-gray-300 body-font bg-gray-800 ">
       <div className="container px-5 py-10 mx-auto">
-        <div className="flex flex-wrap md:text-left text-center order-first justify-center items-center">
+        <div className="flex flex-wrap md:text-left text-center order-first justify-center ">
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-gray-300 tracking-widest text-sm mb-3">
               POLICIES
@@ -44,13 +44,17 @@ export default function Footer() {
                 Submit
               </button>
             </div>
-            <hr className="mt-5 mb-5"/>
-            <p className="text-gray-500 text-sm mt-2 md:text-left text-center">
-              made by rohit.codes
-            </p>
+            
           </div>
         </div>
       </div>
+
+    <div className="flex flex-col items-center">
+      <hr className="bg-gray=400 w-full max-w-xl"/>
+            <p className="text-gray-500 flex justify-center items-center p-5 text-sm mt-2 md:text-left text-center">
+              made by rohit.codes
+            </p>
+    </div>
     </footer>
   );
 }
