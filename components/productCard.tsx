@@ -4,7 +4,6 @@ import Router from "next/router";
 
 export default function ProductCard({ tshirt }: any) {
   const [animate, setanimate] = React.useState(false);
-console.log(tshirt);
 
   function addToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.stopPropagation();
@@ -53,7 +52,6 @@ console.log(tshirt);
 }
 
 function AddedToCart() {
-
 
   return (
     <div className="addedtocart w-screen h-screen fixed flex justify-center items-center top-0">

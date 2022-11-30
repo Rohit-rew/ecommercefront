@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Router from "next/router";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
@@ -8,9 +9,9 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header() {
   const [isMenueOpen, setMenu] = React.useState(false);
-  const [isCartOpen, setCart] = React.useState(true);
-  const {pathname} = Router
-  console.log(pathname)
+  const [isCartOpen, setCart] = React.useState(false);
+  // const {pathname} = Router
+  const {pathname} = useRouter()
 
   function toggleHam() {
     setMenu((preval) => !preval);
