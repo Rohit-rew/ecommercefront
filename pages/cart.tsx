@@ -48,8 +48,8 @@ export default function Cart() {
 
                   {/* <p>{product.total}</p> */}
                   <div className="flex flex-col w-6 gap-2">
-                    {/* <button className="bg-green-400 w-full h-2/4 rounded flex item-center justify-center text-xl">+</button> */}
-                    <button onClick={(e)=>removeFromCart(product , i)} className="bg-red-400 w-full h-2/4 rounded flex item-center justify-center text-xl">-</button>
+                    
+                    <button onClick={(e)=>removeFromCart(product , i)} className="bg-red-400 w-full h-full rounded flex flex-col item-center justify-center text-xl p-2">-</button>
                   </div>
                 </div>
               );

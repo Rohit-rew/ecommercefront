@@ -105,7 +105,7 @@ function Cart(props: any) {
         const product = preval.find((product) => {
           return product.attributes.sku === item.attributes.sku;
         });
-        const updatedProduct = { ...product, qty: product.qty - 1 };
+        const updatedProduct = { ...product, qty: product.qty - 1 , total : (product.attributes.price*(product.qty-1)) };
         preval[index] = updatedProduct;
         return preval;
       });
