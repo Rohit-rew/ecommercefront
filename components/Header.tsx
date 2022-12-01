@@ -22,7 +22,7 @@ export default function Header() {
   }
 
   // contains the cart context
-  const { cart } = React.useContext(cartContext);
+  const { cart , cartValue} = React.useContext(cartContext);
   return (
     <>
       <header className="w-full bg-gray-800 h-20 px-5 flex items-center justify-between sm:px-7 lg:px-10 z-20 fixed top-0">
@@ -60,9 +60,9 @@ export default function Header() {
               onClick={() => toggleCart()}
               className="text-gray-400 w-8 text-5xl"
             />
-            {Boolean(cart.items.length) && (
+            {Boolean(cart.length) && (
               <span className="text-xs absolute left-0 top-0 bg-red-400 rounded-full w-4 h-4 flex items-center justify-center">
-                {cart.items.length}
+                {cartValue.totalItems}
               </span>
             )}
             {!isMenueOpen && (

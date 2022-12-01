@@ -82,17 +82,33 @@ export default function Register() {
 export function Registered({user}) {
 
     const data = Router
+    const [msg , setMsg] = React.useState(null)
+    const [error , setError] = React.useState(null)
+
+    async function resendVerification(){
+      try {
+        const data = await axios.post("http://192.168.1.7:1337/api/auth/send-email-confirmation" ,{
+          email : user.email
+        })
+        console.log(data)
+        if(data.status===200){
+          setMsg("Link resent")
+        }
+      } catch (error) {
+        setError(error.response.data.error.message)
+      }
+    }
 
   return (
     <div className="registered__modal flex p-5 fixed w-screen h-screen justify-center items-center">
-        <div className="bg-white w-full h-96 p-5 flex flex-col justify-between rounded-md">
-            <div className="flex flex items-center justify-left gap-10">
-                <FontAwesomeIcon className="text-3xl" icon={faListCheck} />
-                <h1 className="text-4xl text-center">Registered</h1>
-            </div>
-                <h3>User Name : <span className="text-red-400">{user.username}</span> </h3>
-                <h3>Email: <span className="text-red-400">{user.email}</span></h3>
-                <button onClick={()=>data.push("/account/login")}  className="bg-gray-800 rounded-md w-full text-white p-2">Login</button>
+        <div className="bg-white w-full p-5 flex flex-col justify-between rounded-md max-w-xl gap-5">
+
+                <h2 className="text-gray-500 text-justify">An Email containing a verification link is sent to {user.email} Please click on the Link to verify the email address and press Login bellow to log in.</h2>
+                <h2 className="text-gray-500 text-justify">If you have not received any email from us please check your spam folder or <span onClick={()=>resendVerification()} className="text-green-500 cursor-pointer">click here</span> to resend the verification email.</h2>
+
+                {msg && <h3 className="text-green-500 text-center">{msg}</h3>}
+                {error && <h3 className="text-red-500 text-center">{error}</h3>}
+                <button onClick={()=>data.push("/account/login")}  className="bg-red-500 rounded-md w-full text-white p-2">Login</button>
         </div>
     </div>
   )

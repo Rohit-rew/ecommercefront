@@ -34,17 +34,6 @@ export default function Login() {
             maxAge: 3600,
           });
           Router.replace("/account");
-
-          setcookie("ecommerceusername", user.username, {
-            path: "/",
-            sameSite: true,
-            maxAge: 3600,
-          });
-          setcookie("ecommerceuseremail", user.email, {
-            path: "/",
-            sameSite: true,
-            maxAge: 3600,
-          });
         }
       } catch (error: any) {
         seterror(() => {

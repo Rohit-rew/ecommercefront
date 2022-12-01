@@ -15,14 +15,16 @@ type product = {
 const cartContext = React.createContext({});
 
 function Cart(props: any) {
-  const [cart, setcart] = React.useState({ items: [], checkout: {} });
-  const [reload , setreload] = React.useState(1)
+
+  const [cart, setcart] = React.useState([]);
+  const [cartValue, setCartvalue] = React.useState({});
+  const [reload , setReload] = React.useState(1)
 
   //returns subtotal of the cart
   function subtotal(itemsarray: product[]) {
     let subTotal = 0;
     itemsarray.forEach((item) => {
-      console.log(item.attributes.price , item.qty)
+      console.log(item.attributes.price, item.qty);
       subTotal += item.attributes.price * item.qty;
     });
     return subTotal;
@@ -40,61 +42,79 @@ function Cart(props: any) {
     return GrandTotal;
   }
 
+  function totalItems(itemsArray: product[]) {
+    let totalqty = 0;
+    itemsArray.forEach((item) => {
+      totalqty += item.qty;
+    });
+
+    return totalqty;
+  }
+
+  React.useEffect(() => {
+    if (cart.length) {
+      setCartvalue(() => {
+        return {
+          totalItems: totalItems(cart),
+          subtotal: subtotal(cart),
+          gst: gst(subtotal(cart)),
+          total: total(subtotal(cart), gst(subtotal(cart))),
+        };
+      });
+    }
+  }, [cart , reload]);
+
   // adds a item to cart
   function addItem(item: product) {
-    if (!cart.items.length) {
-      setcart({
-        items: [{ ...item, total: item.attributes.price * item.qty }],
-        checkout: {
-          subtotal: subtotal(cart.items),
-          gst: gst(subtotal(cart.items)),
-          total: total(subtotal(cart.items), gst(subtotal(cart.items))),
-        },
-      }); //=>
-    } else if (cart.items.length) {
+    if (!cart.length) {
+      setcart([{ ...item, total: item.attributes.price * item.qty }]); //=>
+    } else if (cart.length) {
       setcart((preval) => {
-        const product = preval.items.find((product) => {
+        const product = preval.find((product) => {
           return product.attributes.sku === item.attributes.sku;
         });
         if (product) {
-          const index = preval.items.findIndex((item) => {
+          const index = preval.findIndex((item) => {
             return product.attributes.sku === item.attributes.sku;
           });
 
-          preval.items.splice(index, 1, {
+          preval.splice(index, 1, {
             ...product,
             qty: product.qty + 1,
-            total: product.attributes.price * (product.qty+1),
+            total: product.attributes.price * (product.qty + 1),
           });
-          return {
-            items: [...preval.items],
-            checkout: {
-              subtotal: subtotal(preval.items),
-              gst: gst(subtotal(preval.items)),
-              total: total(subtotal(preval.items), gst(subtotal(preval.items))),
-            },
-          }; //==>
+          return [...preval];
         } else {
-          //not found
-          return {
-            items: [
-              ...preval.items,
-              { ...item, total: item.attributes.price * item.qty },
-            ],
-            checkout: {
-              subtotal: subtotal(preval.items),
-              gst: gst(subtotal(preval.items)),
-              total: total(subtotal(preval.items), gst(subtotal(preval.items))),
-            },
-          }; //==>
+          return [
+            ...preval,
+            { ...item, total: item.attributes.price * item.qty },
+          ];
         }
       });
     }
-    setreload(Math.random())
+  }
+
+  function removeItem(item: product, index: number) {
+    if (item.qty === 1) {
+      setcart((preval) => {
+        preval.splice(index, 1);
+        return preval;
+      });
+    } else if (item.qty > 1) {
+      setcart((preval) => {
+        const product = preval.find((product) => {
+          return product.attributes.sku === item.attributes.sku;
+        });
+        const updatedProduct = { ...product, qty: product.qty - 1 };
+        preval[index] = updatedProduct;
+        return preval;
+      });
+    }
+    setReload(Math.random())
   }
 
   return (
-    <cartContext.Provider value={{ cart, addItem }}>
+    <cartContext.Provider key={reload} value={{ cart, cartValue, addItem , removeItem }}>
       {props.children}
     </cartContext.Provider>
   );
