@@ -86,6 +86,8 @@ export default function Account() {
             </tr>
             </tbody>
           </table>
+
+          <button onClick={()=>Router.push("/account/myorders")} className="bg-green-500 px-5 py-2 rounded text-white">My orders</button>
           <button
             className="bg-red-500 px-5 py-2 rounded text-white"
             onClick={() => logout()}
