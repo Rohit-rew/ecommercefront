@@ -11,7 +11,7 @@ export default function Myorders() {
     getorders();
     async function getorders() {
       try {
-        const data = await axios.get("http://192.168.1.7:1337/api/orders", {
+        const data = await axios.get(`${process.env.NEXT_PUBLIC_BACK_URL}/api/orders`, {
           headers: {
             Authorization: `Bearer ${cookie.ecommerce}`,
           },

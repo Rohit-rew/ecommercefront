@@ -132,30 +132,3 @@ export default function Header() {
   );
 }
 
-
-
-
-      // {/*cart*/}
-      // {isCartOpen && (
-      //   <div className="fixed w-full bg-gray-800 top-0 left-0 z-0 px-5 pt-20 pb-5 flex flex-col gap-6 text-xl gap-2 shadow-xl overflow-scroll ">
-      //     {!Boolean(cart.length) && (
-      //       <h3 className="text-gray-400 text-center p-5">
-      //         No items in the cart
-      //       </h3>
-      //     )}
-
-      //     {cart.map((product) => {
-      //       return (
-      //         <div className="product-container w-full h-20 bg-gray-700 flex gap-5 rounded p-2">
-      //           <img src={`http://192.168.1.7:1337${product.attributes.image.data.attributes.url}`} className="h-full" />
-      //           <div className="flex flex-col justify-between text-gray-300">
-      //             <h2>{product.attributes.Title}</h2>
-      //             <span>{product.attributes.price}</span>
-      //           </div>
-      //         </div>
-      //       );
-      //     })}
-
-      //     <hr />
-      //   </div>
-      // )}

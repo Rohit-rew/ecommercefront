@@ -20,7 +20,7 @@ export default function CreateNewPass() {
     if (password === confirmpass) {
       try {
         const data = await axios.post(
-          "http://localhost:1337/api/auth/reset-password",
+          `${process.env.NEXT_PUBLIC_BACK_URL}/api/auth/reset-password`,
           {
             code: code,
             password: password,

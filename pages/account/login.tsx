@@ -16,7 +16,7 @@ export default function Login() {
     if (email && password) {
       try {
         const { data } = await axios.post(
-          "http://192.168.1.7:1337/api/auth/local",
+          `${process.env.NEXT_PUBLIC_BACK_URL}/api/auth/local`,
           {
             identifier: email,
             password,

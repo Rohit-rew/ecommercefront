@@ -19,7 +19,7 @@ export default function Register() {
         
         if(name && email && password.length>=10 && (password == confirmpass)){
             try {
-                const data = await axios.post("http://192.168.1.7:1337/api/auth/local/register" , {username : name , email , password})
+                const data = await axios.post(`${process.env.NEXT_PUBLIC_BACK_URL}/api/auth/local/register` , {username : name , email , password})
                 console.log(data)
                 if(data.status ===200){
                     setUser({username : data.data.user.username,

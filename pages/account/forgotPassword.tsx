@@ -12,7 +12,7 @@ export default function ForgotPassword() {
     
     if(email){
       try {
-        const data = await axios.post("http://192.168.1.7:1337/api/auth/forgot-password" , {email})
+        const data = await axios.post(`${process.env.NEXT_PUBLIC_BACK_URL}/api/auth/forgot-password` , {email})
         if(data.status===200){
           setMsg(`Reset link sent to ${email} please check inbox`)
         }

@@ -7,7 +7,6 @@ export default function ProductCard({ tshirt }: any) {
   const [animate, setanimate] = React.useState(false);
   const {addItem} = React.useContext(cartContext)
 
-
   function addToCart(e: React.MouseEvent<HTMLButtonElement, MouseEvent> , tshirt) {
     e.stopPropagation();
     setanimate(true);
@@ -25,16 +24,13 @@ export default function ProductCard({ tshirt }: any) {
     Router.push(`/${route}`);
   }
 
-
-
-
   return (
     <>
       {animate && <AddedToCart />}
       <div className="productCard shadow-md rounded-md bg-gray-600">
         <img
           onClick={(e) => openProduct(e, `products/${tshirt.id}`)}
-          src={`http://192.168.1.7:1337${tshirt.attributes.image.data.attributes.url}`}
+          src={`http://192.168.1.10:1337${tshirt.attributes.image.data.attributes.url}`}
         />
 
         <div

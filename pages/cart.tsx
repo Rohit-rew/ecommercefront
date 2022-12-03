@@ -32,7 +32,7 @@ export default function Cart() {
           <div className=" w-full shadow p-5 box-border rounded flex flex-col gap-5 bg-white max-w-xl">
             {cart.map((product: product , i : number) => {
               return (
-                <div className="product-container w-full h-20 bg-gray-700 flex gap-5 rounded p-2 justify-between ">
+                <div key={i} className="product-container w-full h-20 bg-gray-700 flex gap-5 rounded p-2 justify-between ">
                   <div className="flex">
                     <img
                       src={`http://192.168.1.7:1337${product.attributes.image.data.attributes.url}`}

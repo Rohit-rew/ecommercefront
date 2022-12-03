@@ -24,10 +24,10 @@ export default function Account() {
     if (cookie.ecommerce) {
       fetch();
     }
-
+    console.log(process.env.NEXT_PUBLIC_BACK_URL)
     async function fetch() {
       try {
-        const user = await axios.get("http://192.168.1.7:1337/api/users/me", {
+        const user = await axios.get(`${process.env.NEXT_PUBLIC_BACK_URL}/api/users/me`, {
           headers: { Authorization: `Bearer ${cookie.ecommerce}` },
         });
         console.log(user.status);

@@ -19,7 +19,7 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const data = await fetch("http://localhost:1337/api/tshirts/?populate=*");
+  const data = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}/api/tshirts/?populate=*`);
   const data_res = await data.json();
 
   return {
