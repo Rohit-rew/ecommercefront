@@ -8,6 +8,7 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { cartContext } from "../context/cart";
 
+
 export default function Header() {
   const [isMenueOpen, setMenu] = React.useState(false);
   const { pathname } = useRouter();

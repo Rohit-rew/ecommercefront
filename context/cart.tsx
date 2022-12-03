@@ -1,5 +1,6 @@
 import { PRERENDER_REVALIDATE_HEADER } from "next/dist/server/api-utils";
 import React, { useEffect, useState } from "react";
+import { Context } from "vm";
 
 type product = {
   id: number;
@@ -12,7 +13,8 @@ type product = {
   qty: number;
 };
 
-const cartContext = React.createContext({});
+
+const cartContext = React.createContext({cart : [] , cartValue : {} });
 
 function Cart(props: any) {
 
