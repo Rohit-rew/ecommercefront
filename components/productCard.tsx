@@ -30,7 +30,7 @@ export default function ProductCard({ tshirt }: any) {
       <div className="productCard shadow-md rounded-md bg-gray-600">
         <img
           onClick={(e) => openProduct(e, `products/${tshirt.id}`)}
-          src={`http://192.168.1.10:1337${tshirt.attributes.image.data.attributes.url}`}
+          src={`${process.env.NEXT_PUBLIC_BACK_URL}${tshirt.attributes.image.data.attributes.url}`}
         />
 
         <div

@@ -35,7 +35,7 @@ export default function Cart() {
                 <div key={i} className="product-container w-full h-20 bg-gray-700 flex gap-5 rounded p-2 justify-between ">
                   <div className="flex">
                     <img
-                      src={`http://192.168.1.7:1337${product.attributes.image.data.attributes.url}`}
+                      src={`${process.env.NEXT_PUBLIC_BACK_URL}${product.attributes.image.data.attributes.url}`}
                       className="h-full"
                     />
                     <div className="flex flex-col justify-between text-gray-300">
