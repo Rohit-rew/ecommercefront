@@ -12,7 +12,7 @@ export default function Product(props: any) {
           <img
             alt="ecommerce"
             className="lg:w-1/2 w-full lg:h-auto h-74 object-cover object-center rounded bg-white "
-            src={`http://192.168.1.7:1337${product.image.data.attributes.url}`}
+            src={`${process.env.NEXT_PUBLIC_BACK_URL}${product.image.data.attributes.url}`}
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
