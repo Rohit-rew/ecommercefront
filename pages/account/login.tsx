@@ -3,11 +3,12 @@ import axios from "axios";
 import Router from "next/router";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [error, seterror] = React.useState(null);
   const [cookie, setcookie] = useCookies(["ecommerce"]);
-
+  const router = useRouter()
   async function loginUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const email = e.currentTarget.email.value;
@@ -33,7 +34,8 @@ export default function Login() {
             sameSite: true,
             maxAge: 3600,
           });
-          Router.replace("/account");
+          // Router.replace("/account");
+          router.push("/account")
         }
       } catch (error : any) {
         seterror(() => {
