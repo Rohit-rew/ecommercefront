@@ -28,8 +28,8 @@ export default function Account() {
     if (cookie.ecommerce) {
       fetch();
     }
-    console.log(process.env.NEXT_PUBLIC_BACK_URL);
     async function fetch() {
+      console.log("fetch inside /accounts runssss")
       try {
         const user = await axios.get(
           `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/me/?populate=*`,
