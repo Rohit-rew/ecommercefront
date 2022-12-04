@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
 import Router from "next/router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faListCheck} from "@fortawesome/free-solid-svg-icons"
 
 export default function Register() {
 
@@ -11,10 +9,10 @@ export default function Register() {
 
     async function register(e:React.FormEvent<HTMLFormElement>){
         e.preventDefault();
-        const name = e.target.name.value
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const confirmpass = e.target.confirmpass.value;
+        const name = e.currentTarget.name1.value
+        const email = e.currentTarget.email.value;
+        const password = e.currentTarget.password.value;
+        const confirmpass = e.currentTarget.confirmpass.value;
         console.log(name ,email , password, confirmpass);
         
         if(name && email && password.length>=10 && (password == confirmpass)){
@@ -46,8 +44,8 @@ export default function Register() {
 
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="name">Name</label>
-            <input id="name" className="border p-1 rounded border-gray-400" type={"text"} />
+            <label htmlFor="name1">Name</label>
+            <input id="name1" className="border p-1 rounded border-gray-400" type={"text"} />
           </div>
 
           <div className="flex flex-col gap-2">

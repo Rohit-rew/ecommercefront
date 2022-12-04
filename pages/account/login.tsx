@@ -10,8 +10,8 @@ export default function Login() {
 
   async function loginUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const email = e.currentTarget.email.value;
+    const password = e.currentTarget.password.value;
 
     if (email && password) {
       try {
@@ -35,7 +35,7 @@ export default function Login() {
           });
           Router.replace("/account");
         }
-      } catch (error: any) {
+      } catch (error : any) {
         seterror(() => {
           const message = error.response.data.error.message.replace(
             "identifier",

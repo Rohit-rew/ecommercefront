@@ -1,6 +1,6 @@
-import { PRERENDER_REVALIDATE_HEADER } from "next/dist/server/api-utils";
-import React, { useEffect, useState } from "react";
-import { Context } from "vm";
+import React, { ReactComponentElement, ReactPropTypes, useEffect, useState } from "react";
+import PropTypes from 'prop-types';
+
 
 type product = {
   id: number;
@@ -13,20 +13,39 @@ type product = {
   qty: number;
 };
 
+type cart = {}[]
 
-const cartContext = React.createContext({cart : [] , cartValue : {} });
+type cartValue ={
+  totalItems : number,
+  subtotal : number,
+  gst : number,
+  total : number
+}
 
-function Cart(props: any) {
+type cartContext = {
+  cart : cart
+  cartValue : cartValue
+  addItem : (val : product)=>void
+  removeItem : (val : product , i : number )=>void
+}
 
-  const [cart, setcart] = React.useState([]);
-  const [cartValue, setCartvalue] = React.useState({});
-  const [reload , setReload] = React.useState(1)
+type children = {
+  children : React.ReactNode
+}
+
+// const cartContext = React.createContext({cart : [] , cartValue : {} });
+const cartContext = React.createContext <cartContext | undefined>(undefined);
+
+function Cart({children} : children) {
+
+  const [cart, setcart] = useState([]);
+  const [cartValue, setCartvalue] = useState <cartValue>({totalItems : 0 , subtotal : 0 , gst : 0 , total : 0});
+  const [reload , setReload] = useState(1)
 
   //returns subtotal of the cart
   function subtotal(itemsarray: product[]) {
     let subTotal = 0;
     itemsarray.forEach((item) => {
-      console.log(item.attributes.price, item.qty);
       subTotal += item.attributes.price * item.qty;
     });
     return subTotal;
@@ -39,7 +58,7 @@ function Cart(props: any) {
   }
 
   //returns grandtotal of cart
-  function total(subtotal: number, gstTotal: number): Number {
+  function total(subtotal: number, gstTotal: number): number {
     const GrandTotal = subtotal + gstTotal;
     return GrandTotal;
   }
@@ -53,7 +72,7 @@ function Cart(props: any) {
     return totalqty;
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (cart.length) {
       setCartvalue(() => {
         return {
@@ -117,7 +136,7 @@ function Cart(props: any) {
 
   return (
     <cartContext.Provider key={reload} value={{ cart, cartValue, addItem , removeItem }}>
-      {props.children}
+      {children}
     </cartContext.Provider>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
@@ -7,15 +7,13 @@ export default function CreateNewPass() {
   const [success, setSuccess] = React.useState(null);
 
   const { query } = useRouter();
-  const router = useRouter();
   const code = query.code;
 
   async function changePass(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const password = e.target.password.value;
-    const confirmpass = e.target.confirmpass.value;
 
-    console.log(password, confirmpass);
+    const password = e.currentTarget.password.value
+    const confirmpass = e.currentTarget.confirmpass.value;
 
     if (password === confirmpass) {
       try {

@@ -6,13 +6,13 @@ import axios from "axios";
 type user = {
   username: string;
   email: string;
-  addresses: {}[];
+  addresses: {Name : string , city : string , Phonenumber : string , zip : number , Address : string, id : number}[];
   id: number;
 };
 
 export default function Account() {
   const [cookie, setcookie] = useCookies();
-  const [user, setUser] = React.useState<user>({});
+  const [user, setUser] = React.useState<user | undefined>(undefined);
   const [addressEdit, setAddressEdit] = React.useState(false);
   const [addressAdd, setAddAddress] = React.useState(false);
 
@@ -54,13 +54,6 @@ export default function Account() {
     }
   }, [addressEdit, addressAdd]);
 
-  const address = {
-    Name: "Mohit",
-    Address: "chicck pokli",
-    city: "jatuwas",
-    Phonenumber: "123456",
-    id: 2,
-  };
 
   // if not logged in
   if (!cookie.ecommerce) {
@@ -93,6 +86,7 @@ export default function Account() {
             setAddressEdit={setAddressEdit}
           />
         )}
+
 
         {addressAdd && <AddAddress setAddAddress={setAddAddress} user={user} />}
         <div className="min-h-screen pt-20 flex flex-col gap-5 p-5 justify-center items-center bg-gray-200">
@@ -203,10 +197,10 @@ function EditAddress({ address, setAddressEdit }: props) {
   const [cookie, setcookie] = useCookies();
   async function changeAddress(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const newName = e.target.name.value;
-    const newAddress = e.target.address.value;
-    const newCity = e.target.city.value;
-    const newPhone = e.target.phone.value;
+    const newName = e.currentTarget.name1.value;
+    const newAddress = e.currentTarget.address.value;
+    const newCity = e.currentTarget.city.value;
+    const newPhone = e.currentTarget.phone.value;
     if (newName && newAddress && newCity && newPhone) {
       try {
         const data = await fetch(
@@ -228,10 +222,10 @@ function EditAddress({ address, setAddressEdit }: props) {
           }
         );
         const res = await data.json();
-
-        console.log(res);
         setAddressEdit(false);
+        // show success mmessage to user
       } catch (error) {
+        // show error to user
         console.log(error);
       }
     }
@@ -246,10 +240,10 @@ function EditAddress({ address, setAddressEdit }: props) {
         >
           <h1 className="text-center text-3xl">Edit Adress</h1>
           <div className="flex flex-col gap-2">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name1">Name</label>
             <input
               className="border rounded"
-              id="name"
+              id="name1"
               type={"text"}
               defaultValue={address.Name}
             />
@@ -296,11 +290,11 @@ function AddAddress({ setAddAddress, user }) {
   const [cookie, setcookie] = useCookies();
   async function addAddress(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const name = e.target.name.value;
-    const address1 = e.target.address.value;
-    const city = e.target.city.value;
-    const zip = e.target.zip.value;
-    const phone = e.target.phone.value;
+    const name = e.currentTarget.name1.value;
+    const address1 = e.currentTarget.address.value;
+    const city = e.currentTarget.city.value;
+    const zip = e.currentTarget.zip.value;
+    const phone = e.currentTarget.phone.value;
 
     if (name && address1 && city && phone) {
       try {
@@ -324,7 +318,6 @@ function AddAddress({ setAddAddress, user }) {
           }
         );
         const res = await data.json();
-
         if (res.data.id) {
           console.log(res.data.id);
           try {
@@ -349,6 +342,7 @@ function AddAddress({ setAddAddress, user }) {
         }
         setAddAddress(false);
       } catch (error) {
+        // display error to user
         console.log(error);
       }
     }
@@ -359,8 +353,8 @@ function AddAddress({ setAddAddress, user }) {
       <div className="max-w-md w-full bg-white rounded p-5">
         <form onSubmit={(e) => addAddress(e)} className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
-            <label htmlFor="name">Name</label>
-            <input className="border rounded" id="name" type={"text"} />
+            <label htmlFor="name1">Name</label>
+            <input className="border rounded" id="name1" type={"text"} />
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="address">Address</label>

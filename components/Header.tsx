@@ -10,7 +10,7 @@ import { cartContext } from "../context/cart";
 
 
 export default function Header() {
-  const [isMenueOpen, setMenu] = React.useState(false);
+  const [isMenueOpen, setMenu] = React.useState<Boolean>(false);
   const { pathname } = useRouter();
 
   function toggleHam() {
@@ -68,14 +68,14 @@ export default function Header() {
             )}
             {!isMenueOpen && (
               <FontAwesomeIcon
-                onClick={(e) => toggleHam()}
+                onClick={() => toggleHam()}
                 icon={faBars}
                 className="text-gray-400 w-8 text-5xl md:hidden"
               />
             )}
             {isMenueOpen && (
               <FontAwesomeIcon
-                onClick={(e) => toggleHam()}
+                onClick={() => toggleHam()}
                 icon={faClose}
                 className="text-gray-400 w-8 text-5xl md:hidden"
               />

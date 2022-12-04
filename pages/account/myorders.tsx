@@ -27,13 +27,13 @@ export default function Myorders() {
 
   // if the user is loged in
   return (
-    <div className="min-h-screen pt-20 flex  items-center flex-col gap-5 p-5 justify-center items-center bg-gray-200">
+    <div className="min-h-screen pt-20 flex flex-col gap-5 p-5 justify-center items-center bg-gray-200">
       <div className="flex flex-col w-full shadow mt-10 max-w-xl bg-white rounded p-5 gap-5">
         <h1 className="text-3xl text-center">My orders</h1>
         <hr />
 
         {/* if there are no orders */}
-        {/* <h2 className='text-center text-gray-400'>No Order History available</h2> */}
+        {!Boolean(orders.length) && <h2 className='text-center text-gray-400'>No Order History available</h2>}
 
         {/* if there are orders available */}
 

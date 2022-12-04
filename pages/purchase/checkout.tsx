@@ -1,17 +1,17 @@
 import React from "react";
 import { CardElement } from "@stripe/react-stripe-js";
 
-
 export default function Checkout() {
   const [addressId, setAddressId] = React.useState(null);
-  async function addAddress(e) {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const address1 = e.target.address.value;
-    const city = e.target.city.value;
-    const zip = e.target.zip.value;
-    const phone = e.target.phone.value;
 
+
+  async function addAddress(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const name = e.currentTarget.name1.value;
+    const address1 = e.currentTarget.address.value;
+    const city = e.currentTarget.city.value;
+    const zip = e.currentTarget.zip.value;
+    const phone = e.currentTarget.phone.value;
     if (name && address1 && city && phone) {
       try {
         const data = await fetch(
@@ -36,6 +36,7 @@ export default function Checkout() {
         const addressId = res.data.id;
         setAddressId(addressId);
       } catch (error) {
+        // show errors to user
         console.log(error);
       }
     }
@@ -51,8 +52,8 @@ export default function Checkout() {
             className="flex flex-col gap-5 bg-white p-5 max-w-md w-full rounded shadow"
           >
             <div className="flex flex-col gap-2">
-              <label htmlFor="name">Name</label>
-              <input className="border rounded" id="name" type={"text"} />
+              <label htmlFor="name1">Name</label>
+              <input className="border rounded" id="name1" type={"text"} />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="address">Address</label>
@@ -77,49 +78,6 @@ export default function Checkout() {
               Proceed to payment
             </button>
           </form>
-        </div>
-      )}
-
-
-
-
-      {addressId && (
-        <div className="pt-20 min-h-screen bg-gray-200 flex justify-center items-center">
-          <div>
-            <div>
-              <label htmlFor="card-element">Credit or debit card</label>
-
-              <div>
-                <fieldset style={{ border: "none" }}>
-                  <div className="form-row">
-                    <div id="card-element" style={{ width: "100%" }}>
-                      <CardElement
-                        options={{
-                          style: { width: "100%", base: { fontSize: "18px" } },
-                        }}
-                      />
-                    </div>
-                    <br />
-                    <div className="order-button-wrapper">
-                      <button>Confirm order</button>
-                    </div>
-                    {true ? <div>error</div> : null}
-                    <div id="card-errors" role="alert" />
-                  </div>
-                </fieldset>
-              </div>
-            </div>
-            <style jsx>
-              {`
-                .order-button-wrapper {
-                  display: flex;
-                  width: 100%;
-                  align-items: flex-end;
-                  justify-content: flex-end;
-                }
-              `}
-            </style>
-          </div>
         </div>
       )}
     </>
